@@ -207,7 +207,7 @@ function continueGame(user$Response, computer$Response) {
         // console.log("Other if is running :- User response: " + user$Response + " Computer Response: " + computer$Response)
         computerResponse.length = 0;
         userResponse.length = 0;
-        console.log("Other if is running after clearing :- User response: " + user$Response + " Computer Response: " + computer$Response)
+        //console.log("Other if is running after clearing :- User response: " + user$Response + " Computer Response: " + computer$Response)
         document.querySelector("h1").textContent = "Game Over, Press Any Key To Restart";
 
         document.querySelector("body").classList.add("game-over");
