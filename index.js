@@ -53,22 +53,25 @@ function flashButton(key) {
 
 
 
-//KeyBoard Detection + Game Initializer
+//KeyBoard Detection
 function initializeGame() {
     document.addEventListener("keydown", function () {
         document.querySelector("h1").textContent = "Level 1";
+        computerResponse.length = 0;
+        userResponse.length = 0;
         i = 2;
         var initiateLevel = 0;
         initiateLevel = randomNumber();
         setTimeout(function () { flashButton(initiateLevel) }, 200);
         computerResponse.push(initiateLevel);
         // console.log("Computer response in initialize game is: " + computerResponse);
+        clickDetect();
     }, { once: true })
 }
 
 
 
-//Click Detection + Continue Game
+//Click Detection
 function clickDetect() {
     var arrayOfAllButtons = document.querySelectorAll(".btn");
     for (let j = 0; j < 4; j++) {
@@ -77,6 +80,7 @@ function clickDetect() {
 
             //Play sound when buttons are clicked
             if (arrayOfButtonClass.includes("green")) {
+                // console.log("Entered click detect 1");
                 userResponse.push(1);
                 flashButton(1);
                 if (userResponse.length < computerResponse.length && userResponse.length !== 0 && computerResponse.length !== 0) {
@@ -94,9 +98,11 @@ function clickDetect() {
                     continueGame(userResponse, computerResponse);
                     // console.log("EXITED EQUAL LENGTH IF");
                 }
+                // console.log("Exited click detect 1");
             }
 
             if (arrayOfButtonClass.includes("red")) {
+                // console.log("Entered click detect 2");
                 userResponse.push(2);
                 flashButton(2);
                 if (userResponse.length < computerResponse.length && userResponse.length !== 0 && computerResponse.length !== 0) {
@@ -114,10 +120,11 @@ function clickDetect() {
                     continueGame(userResponse, computerResponse);
                     // console.log("EXITED EQUAL LENGTH IF");
                 }
-
+                // console.log("Exited click detect 2");
             }
 
             if (arrayOfButtonClass.includes("yellow")) {
+                // console.log("Entered click detect 3");
                 userResponse.push(3);
                 flashButton(3);
                 if (userResponse.length < computerResponse.length && userResponse.length !== 0 && computerResponse.length !== 0) {
@@ -135,9 +142,11 @@ function clickDetect() {
                     continueGame(userResponse, computerResponse);
                     // console.log("EXITED EQUAL LENGTH IF");
                 }
+                // console.log("Exited click detect 3");
             }
 
             if (arrayOfButtonClass.includes("blue")) {
+                // console.log("Entered click detect 4");
                 userResponse.push(4);
                 flashButton(4);
                 if (userResponse.length < computerResponse.length && userResponse.length !== 0) {
@@ -155,6 +164,7 @@ function clickDetect() {
                     continueGame(userResponse, computerResponse);
                     // console.log("EXITED EQUAL LENGTH IF");
                 }
+                // console.log("Exited click detect 4");
             }
 
         })
@@ -207,7 +217,7 @@ function continueGame(user$Response, computer$Response) {
         // console.log("Other if is running :- User response: " + user$Response + " Computer Response: " + computer$Response)
         computerResponse.length = 0;
         userResponse.length = 0;
-        //console.log("Other if is running after clearing :- User response: " + user$Response + " Computer Response: " + computer$Response)
+        // console.log("Other if is running after clearing :- User response: " + user$Response + " Computer Response: " + computer$Response)
         document.querySelector("h1").textContent = "Game Over, Press Any Key To Restart";
 
         document.querySelector("body").classList.add("game-over");
@@ -229,7 +239,6 @@ function continueGame(user$Response, computer$Response) {
 
 function startMainGame() {
     initializeGame();
-    clickDetect();
 }
 
 startMainGame();
